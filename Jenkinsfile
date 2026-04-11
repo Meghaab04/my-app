@@ -1,38 +1,17 @@
 pipeline {
     agent any
 
-    tools {
-        maven 'Maven'   // Configure this in Jenkins
-    }
-
     stages {
-        stage('Checkout') {
+        stage('Compile') {
             steps {
-                echo 'Cloning code...'
-            }
-        }
-
-        stage('Build') {
-            steps {
-                echo 'Building project...'
-                sh 'mvn clean compile'
+                sh 'javac App.java'
             }
         }
 
         stage('Run') {
             steps {
-                echo 'Running app...'
-                sh 'mvn exec:java'
+                sh 'java App'
             }
-        }
-    }
-
-    post {
-        success {
-            echo 'Build SUCCESS!'
-        }
-        failure {
-            echo 'Build FAILED!'
         }
     }
 }
