@@ -2,15 +2,15 @@ pipeline {
     agent any
 
     stages {
-        stage('Compile') {
+        stage('Build') {
             steps {
-                sh 'javac App.java'
+                sh 'mvn clean compile'
             }
         }
 
         stage('Run') {
             steps {
-                sh 'java App'
+                sh 'mvn exec:java'
             }
         }
     }
