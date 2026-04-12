@@ -17,10 +17,10 @@ pipeline {
                 sh '''
                 scp -i /var/lib/jenkins/Ubuntu.pem -o StrictHostKeyChecking=no \
                 target/dummy-java-app-1.0-SNAPSHOT.jar \
-                ubuntu@3.109.183.215:/home/ubuntu/
+                ubuntu@3.6.94.109:/home/ubuntu/
 
                 ssh -i /var/lib/jenkins/Ubuntu.pem -o StrictHostKeyChecking=no \
-                ubuntu@3.109.183.215 \
+                ubuntu@3.6.94.109 \
                 "pkill -f java || true && nohup java -jar /home/ubuntu/dummy-java-app-1.0-SNAPSHOT.jar > app.log 2>&1 &"
                 '''
             }
