@@ -15,11 +15,13 @@ pipeline {
         stage('Deploy to EC2') {
             steps {
                 sh '''
-                scp -i C:/Users/megha/Downloads/Ubuntu.pem -o StrictHostKeyChecking=no \
-                target/*.jar ubuntu@ec2-3-110-179-87:/home/ubuntu/
+                scp -i /var/lib/jenkins/Ubuntu.pem -o StrictHostKeyChecking=no \
+                target/dummy-java-app-1.0-SNAPSHOT.jar \
+                ubuntu@3.109.183.215:/home/ubuntu/
 
-                ssh -i C:/Users/megha/Downloads/Ubuntu.pem -o StrictHostKeyChecking=no ubuntu@ec2-3-110-179-87 \
-                "pkill -f java || true && nohup java -jar *.jar > app.log 2>&1 &"
+                ssh -i /var/lib/jenkins/Ubuntu.pem -o StrictHostKeyChecking=no \
+                ubuntu@3.109.183.215 \
+                "pkill -f java || true && nohup java -jar /home/ubuntu/dummy-java-app-1.0-SNAPSHOT.jar > app.log 2>&1 &"
                 '''
             }
         }
