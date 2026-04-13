@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Deploy') {
     steps {
-        sh 'scp -i /var/lib/jenkins/Ubuntu.pem -o StrictHostKeyChecking=no target/*.jar ubuntu@3.6.94.109:/home/ubuntu/'
+        sh 'scp -i /var/lib/jenkins/Ubuntu.pem -o StrictHostKeyChecking=no target/*.jar ubuntu@3.110.157.39:/home/ubuntu/'
             }
         }
 
